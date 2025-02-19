@@ -7,12 +7,12 @@ try {
   const readmePath = 'README.md';
   let readmeContent = fs.readFileSync(readmePath, 'utf-8');
 
-  // Ajouter une ligne de test
-  const testLine = "\nCeci est une ligne de test pour vérifier l'écriture dans le README.md.\n";
-  readmeContent += testLine;
+  // Supprimer tout le contenu en dessous de ## Test Results
+  readmeContent = readmeContent.replace(/## Test Results[\s\S]*$/, '');
 
+  // Ajouter les nouveaux résultats des tests
   const testResultsSection = `## Test Results\n\n\`\`\`\n${testOutput}\n\`\`\``;
-  readmeContent = readmeContent.replace(/## Test Results[\s\S]*?\`\`\`/, testResultsSection);
+  readmeContent += testResultsSection;
 
   fs.writeFileSync(readmePath, readmeContent);
 
