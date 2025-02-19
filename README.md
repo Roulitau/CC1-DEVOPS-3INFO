@@ -11,3 +11,6 @@ Ce projet est destiné à valider les connaissances en DevOps des élèves de 3�
 4. Implémentez une github action pour déployer automatiquement le site sur un hebergement gratuit (Netlify)
 
 ## Test Results
+
+## Test d'écriture
+Ceci est une ligne de test pour vérifier l'écriture dans le README.md.
