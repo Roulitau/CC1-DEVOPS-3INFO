@@ -1,26 +1,28 @@
-const request = require('supertest')
-const app = require ('./server');
+const request = require('supertest');
+const app = require('./src/App');
 
-describe("ToDoList API Tests", ()=>{
-    //Test du get vide
-    it('Devrait return une liste vide au départ', async () =>{
-        const response = await request(app).get('/');
+describe("API de gestion des tâches", () => {
+    
+    it('Devrait retourner une liste vide au départ', async () => {
+        const response = await request(app).get('/tasks');
         expect(response.statusCode).toBe(200);
         expect(response.body.tasks).toEqual([]);
-    })
+    });
 
-    it('Devrait add une nouvelle tâche', async() =>{
+    it('Devrait ajouter une tâche', async () => {
+        const newTask = { id: 1, task: 'Test de tâche' };
         const response = await request(app)
-        .post('/add-task')
-        .send({task : {id: 0, task: "Tâche de test"}});
+            .post('/tasks')
+            .send(newTask);
         expect(response.statusCode).toBe(200);
-        expect(response.body.tasks).toContainEqual({id: 0, task: "Tâche de test"})
-    })
+        expect(response.body.tasks).toContainEqual(newTask);
+    });
 
-    it('Devrait delete', async()=> {
-        //await request(app).post('/add-task').send({task :{id: 0, text: 'Tâche à supprimer'}})
-        const response = await request(app).delete('?id=0');
+    it('Devrait supprimer une tâche', async () => {
+        const taskToDelete = { id: 1, task: 'Tâche à supprimer' };
+        await request(app).post('/tasks').send(taskToDelete); 
+        const response = await request(app).delete(`/tasks/${taskToDelete.id}`);
         expect(response.statusCode).toBe(200);
-        expect(response.body.tasks).toEqual([])
-    })
-})
+        expect(response.body.tasks).not.toContainEqual(taskToDelete);
+    });
+});
