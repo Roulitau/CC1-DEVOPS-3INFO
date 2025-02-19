@@ -9,8 +9,8 @@ try {
   let readmeContent = fs.readFileSync(readmePath, 'utf-8');
   const successMessage = "✅ Les tests ont réussi !";
   
-  const testResultsSection = `## Résultats des tests\n\n${successMessage}\n\n\`\`\`\n${testOutput}\n\`\`\``;
-  readmeContent = readmeContent.replace(/## Résultats des tests[\s\S]*?\`\`\`/, testResultsSection) || readmeContent + '\n' + testResultsSection;
+  const testResultsSection = `## Test Results\n\n${successMessage}\n\n\`\`\`\n${testOutput}\n\`\`\``;
+  readmeContent = readmeContent.replace(/## Test Results[\s\S]*?\`\`\`/, testResultsSection) || readmeContent + '\n' + testResultsSection;
 
   fs.writeFileSync(readmePath, readmeContent);
   console.log(successMessage);
@@ -18,8 +18,8 @@ try {
   let readmeContent = fs.readFileSync(readmePath, 'utf-8');
   const failureMessage = "❌ Les tests ont échoué !";
 
-  const testResultsSection = `## Résultats des tests\n\n${failureMessage}\n\n\`\`\`\n${error.stdout || error.message}\n\`\`\``;
-  readmeContent = readmeContent.replace(/## Résultats des tests[\s\S]*?\`\`\`/, testResultsSection) || readmeContent + '\n' + testResultsSection;
+  const testResultsSection = `## Test Results\n\n${failureMessage}\n\n\`\`\`\n${error.stdout || error.message}\n\`\`\``;
+  readmeContent = readmeContent.replace(/## Test Results[\s\S]*?\`\`\`/, testResultsSection) || readmeContent + '\n' + testResultsSection;
   
   fs.writeFileSync(readmePath, readmeContent);
   console.error(failureMessage);
