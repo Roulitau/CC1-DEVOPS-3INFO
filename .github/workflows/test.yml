@@ -1,29 +1,29 @@
-name: Test Manual Workflow
+name: Node.js CI
 
 on:
-  workflow_dispatch:
-    inputs:
-      Environnement:
-        description: 'The environment i need to deploy on'
-        required: true
-        default: '/dev'
+  push:
+    branch:
+      -master
+    pull_request:
+      -master
 
 jobs:
-  manual-job:
+  build-and-test:
     runs-on: ubuntu-latest
-    environment: dev
 
     steps:
+      - uses: action/checkout@v4
+
+      - name : Instamm Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
       
-      - name: Example
-        run: |
-          echo "Mon exemple"
-          echo "Env Name: ${{ github.event.inputs.Environment }}"
-      - name: Github variable
-        run: echo '${{ toJSON(github)}}'
-      - name: Runner Variable
-        run: echo '${{ toJSON(runner)}}'
-      - name: Secrets Variable
-        run: echo '${{ toJSON(secrets)}}'
-      - name: Env Variable
-        run: echo '${{ toJSON(vars.MY_API_URL)}}'
+      - name : Install Dependencies
+        run: npm install
+
+      - name: ESLint (JS/TS) Action
+        run: npx eslint "*.js"
+      
+      - name: Tests
+        run : npm test
