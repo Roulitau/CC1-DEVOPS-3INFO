@@ -12,6 +12,7 @@ Ce projet est destiné à valider les connaissances en DevOps des élèves de 3�
 
 ## Test Results
 
+<<<<<<< HEAD
 ```
 
 > cc1-devops-3info@0.0.0 test
@@ -29,3 +30,5 @@ Ce projet est destiné à valider les connaissances en DevOps des élèves de 3�
 
 
 ```
+=======
+>>>>>>> 3e90b86 (Test read in readme.md)
