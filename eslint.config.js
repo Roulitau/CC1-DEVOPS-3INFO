@@ -1,18 +1,18 @@
-require js from '@eslint/js'
-require globals from 'globals'
-require react from 'eslint-plugin-react'
-require reactHooks from 'eslint-plugin-react-hooks'
-require reactRefresh from 'eslint-plugin-react-refresh'
-require jest from 'eslint-plugin-jest'
-require testingLibrary from 'eslint-plugin-testing-library'
+const js = require('@eslint/js');
+const globals = require('globals');
+const react = require('eslint-plugin-react');
+const reactHooks = require('eslint-plugin-react-hooks');
+const reactRefresh = require('eslint-plugin-react-refresh');
+const jest = require('eslint-plugin-jest');
+const testingLibrary = require('eslint-plugin-testing-library');
 
-export default [
+module.exports = [
   { ignores: ['dist'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: { ...globals.browser, jest: true, require: true }
+      globals: { ...globals.browser, jest: true, require: true },
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -24,7 +24,7 @@ export default [
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      jest, // Ajouter le plugin Jest
+      jest,
       'testing-library': testingLibrary,
     },
     rules: {
@@ -46,4 +46,4 @@ export default [
       'testing-library/no-dom-import': ['error', 'react'],
     },
   },
-]
+];
