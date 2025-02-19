@@ -8,7 +8,7 @@ try {
   let readmeContent = fs.readFileSync(readmePath, 'utf-8');
 
   // Ajouter une ligne de test
-  const testLine = "\n## Test d'écriture\nCeci est une ligne de test pour vérifier l'écriture dans le README.md.\n";
+  const testLine = "\nCeci est une ligne de test pour vérifier l'écriture dans le README.md.\n";
   readmeContent += testLine;
 
   const testResultsSection = `## Test Results\n\n\`\`\`\n${testOutput}\n\`\`\``;
