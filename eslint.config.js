@@ -1,18 +1,18 @@
-const js = require('@eslint/js');
-const globals = require('globals');
-const react = require('eslint-plugin-react');
-const reactHooks = require('eslint-plugin-react-hooks');
-const reactRefresh = require('eslint-plugin-react-refresh');
-const jest = require('eslint-plugin-jest');
-const testingLibrary = require('eslint-plugin-testing-library');
+import js from '@eslint/js'
+import globals from 'globals'
+import react from 'eslint-plugin-react'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import vitest from 'eslint-plugin-vitest'
+import testingLibrary from 'eslint-plugin-testing-library'
 
-module.exports = [
+export default [
   { ignores: ['dist'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: { ...globals.browser, jest: true, require: true },
+      globals: { ...globals.browser, vitest: true },
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -24,7 +24,7 @@ module.exports = [
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      jest,
+      vitest,
       'testing-library': testingLibrary,
     },
     rules: {
@@ -37,13 +37,13 @@ module.exports = [
         'warn',
         { allowConstantExport: true },
       ],
-      'jest/no-disabled-tests': 'warn',
-      'jest/no-focused-tests': 'error',
-      'jest/no-identical-title': 'error',
-      'jest/prefer-to-have-length': 'warn',
-      'jest/prefer-expect-assertions': 'warn',
+      'vitest/no-disabled-tests': 'warn',
+      'vitest/no-focused-tests': 'error',
+      'vitest/no-identical-title': 'error',
+      'vitest/prefer-to-have-length': 'warn',
+      'vitest/prefer-expect-assertions': 'warn',
       'testing-library/no-debugging-utils': 'warn',
       'testing-library/no-dom-import': ['error', 'react'],
     },
   },
-];
+]
