@@ -12,7 +12,7 @@ export default [
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: { ...globals.browser, jest: true }, // Remplacer vitest par jest
+      globals: { ...globals.browser, jest: true, require: true }
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
