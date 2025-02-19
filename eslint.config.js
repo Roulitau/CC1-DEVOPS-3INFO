@@ -1,10 +1,10 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import jest from 'eslint-plugin-jest'
-import testingLibrary from 'eslint-plugin-testing-library'
+require js from '@eslint/js'
+require globals from 'globals'
+require react from 'eslint-plugin-react'
+require reactHooks from 'eslint-plugin-react-hooks'
+require reactRefresh from 'eslint-plugin-react-refresh'
+require jest from 'eslint-plugin-jest'
+require testingLibrary from 'eslint-plugin-testing-library'
 
 export default [
   { ignores: ['dist'] },
