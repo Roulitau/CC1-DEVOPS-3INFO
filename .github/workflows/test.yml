@@ -28,6 +28,13 @@ jobs:
       - name: Update README with test results
         run: npm run update-readme
 
+      - name: Verify changes in README
+        run: |
+          if git diff --exit-code README.md; then
+            echo "No changes to commit in README.md"
+            exit 1
+          fi
+
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
