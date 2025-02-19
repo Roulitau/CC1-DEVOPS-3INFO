@@ -3,7 +3,7 @@ import globals from 'globals'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import vitest from 'eslint-plugin-vitest'
+import jest from 'eslint-plugin-jest'
 import testingLibrary from 'eslint-plugin-testing-library'
 
 export default [
@@ -12,7 +12,7 @@ export default [
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: { ...globals.browser, vitest: true },
+      globals: { ...globals.browser, jest: true }, // Remplacer vitest par jest
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -24,7 +24,7 @@ export default [
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      vitest,
+      jest, // Ajouter le plugin Jest
       'testing-library': testingLibrary,
     },
     rules: {
@@ -37,11 +37,11 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
-      'vitest/no-disabled-tests': 'warn',
-      'vitest/no-focused-tests': 'error',
-      'vitest/no-identical-title': 'error',
-      'vitest/prefer-to-have-length': 'warn',
-      'vitest/prefer-expect-assertions': 'warn',
+      'jest/no-disabled-tests': 'warn',
+      'jest/no-focused-tests': 'error',
+      'jest/no-identical-title': 'error',
+      'jest/prefer-to-have-length': 'warn',
+      'jest/prefer-expect-assertions': 'warn',
       'testing-library/no-debugging-utils': 'warn',
       'testing-library/no-dom-import': ['error', 'react'],
     },
